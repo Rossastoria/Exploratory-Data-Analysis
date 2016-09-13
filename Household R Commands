@@ -1,0 +1,10 @@
+## Commands to download and clean up household energy data
+
+> df <- read.table("household_power_consumption.txt", header = TRUE, sep = ";", 
+      colClasses = c("character", "character", rep("numeric", 7)), na = "?")
+> df$Time <- strptime(paste(df$Date, df$Time), "%d/%m/%Y %H:%M:%S")
+> df$Date <- as.Date(df$Date, "%d/%m/%Y")
+> dates <- as.Date(c("2007-02-01", "2007-02-02", "%Y-%m-%d"))
+> dat <- subset(df, Date %in% dates)
+
+## dat is a dataframe of 2880 rows and 9 columns.
